@@ -32,14 +32,15 @@ import (
 )
 
 const (
-	CCSAck      = "ack"
-	CCSNack     = "nack"
-	CCSControl  = "control"
-	CCSReceipt  = "receipt"
-	httpAddress = "https://fcm.googleapis.com/fcm/send"
-	xmppHost    = "fcm-xmpp.googleapis.com"
-	xmppPort    = "5235"
-	xmppAddress = xmppHost + ":" + xmppPort
+	CCSAck        = "ack"
+	CCSNack       = "nack"
+	CCSControl    = "control"
+	CCSReceipt    = "receipt"
+	httpAddress   = "https://fcm.googleapis.com/fcm/send"
+	xmppGcmDomain = "gcm.googleapis.com"
+	xmppHost      = "fcm-xmpp.googleapis.com"
+	xmppPort      = "5235"
+	xmppAddress   = xmppHost + ":" + xmppPort
 	// For ccs the min for exponential backoff has to be 1 sec
 	ccsMinBackoff = 1 * time.Second
 )
@@ -602,5 +603,5 @@ func authHeader(apiKey string) string {
 
 // xmppUser generates an xmpp username from a sender ID.
 func xmppUser(senderId string) string {
-	return senderId + "@" + xmppHost
+	return senderId + "@" + xmppGcmDomain
 }
